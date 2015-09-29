@@ -5,16 +5,23 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <style>
+	button a{
+		color:white !important;
+	}
+  </style>
 </head>
 <body>
-	<nav class="navbar">
+	<nav id="main-navbar" class="navbar navbar-fixed-top">
 	  <div class="container">
 	    <div class="navbar-header">
 	      <a class="navbar-brand" href=<%= root_path%> style=" padding: 5px 5px;">
 	        <img alt="Brand" src=<%= image_path("logo.png")%> style="height:100%;">
 	      </a>
 	    </div>
-	    <button class="btn btn-primary navbar-right" type="button" style=" margin: 8px 0px;">Login</button>
+	    <button class="btn btn-primary navbar-right" type="button" style=" margin: 8px 0px;"><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></button>
+		<button class="btn btn-primary navbar-right" type="button" style=" margin: 8px 0px;"><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %></button>
 		<form class="navbar-form navbar-right" role="search">
 	        <div class="form-group">
 	          <input type="text" class="form-control" placeholder="Search">
@@ -24,11 +31,19 @@
 
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
-	        <li class="active"><a href="#">Upcoming <span class="sr-only">(current)</span></a></li>
+	        <li class="active"><a href=<%= events_path %>>Upcoming <span class="sr-only">(current)</span></a></li>
 	        <li><a href="#">Sports</a></li>
 	        <li><a href="#">Concerts</a></li>
 	        <li><a href="#">Theater</a></li>
-	        <li><a href="#">Sell Your Events</a></li>
+			<% if user_signed_in? %>
+				<li><a href=<%= new_event_path %>>Sell Your Events</a></li>
+				Logged in as <strong><%= current_user.email %></strong>.
+				<%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+				<%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+			<% else %>
+
+
+				<%end%>
 	       <!--  <li class="dropdown">
 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
 	          <ul class="dropdown-menu">

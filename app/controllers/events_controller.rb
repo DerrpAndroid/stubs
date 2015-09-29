@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
   # GET /events
   # GET /events.json
   def index
@@ -10,11 +10,14 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    #only show users events
+    
   end
 
   # GET /events/new
   def new
-    @event = Event.new
+
+        @event = Event.new
   end
 
   # GET /events/1/edit
@@ -24,17 +27,18 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
+
     @event = Event.new(event_params)
 
-    respond_to do |format|
-      if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
-        format.json { render :show, status: :created, location: @event }
-      else
-        format.html { render :new }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
-    end
+        respond_to do |format|
+          if @event.save
+            format.html { redirect_to @event, notice: 'Event was successfully created.' }
+            format.json { render :show, status: :created, location: @event }
+          else
+            format.html { render :new }
+            format.json { render json: @event.errors, status: :unprocessable_entity }
+          end
+        end
   end
 
   # PATCH/PUT /events/1

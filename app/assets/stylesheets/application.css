@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+
+.spacing-top{
+	 margin-top: 100px;
+}
+#main-navbar{
+	height: 65px;
+    background-color: #fff;
+    box-shadow: #BCC3C3 0px 0px 20px;
+}

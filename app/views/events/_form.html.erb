@@ -12,23 +12,18 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, :placeholder=>"Title" %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
+    <%= f.text_area :description, :placeholder=>"Description", :rows => 5 %>
   </div>
   <div class="field">
-    <%= f.label :venue %><br>
-    <%= f.text_field :venue %>
+    <%= f.text_field :venue, :placeholder=>"Venue" %>
   </div>
   <div class="field">
-    <%= f.label :genere %><br>
-    <%= f.text_field :genere %>
+    <%= f.text_field :genere, :placeholder=>"Genere" %>
   </div>
   <div class="field">
-    <%= f.label :event_date_time %><br>
     <%= f.datetime_select :event_date_time %>
   </div>
   <div class="actions">
