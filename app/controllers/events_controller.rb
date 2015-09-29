@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:create,:update,:edit,:new]
   # GET /events
   # GET /events.json
   def index
@@ -9,7 +9,7 @@ class EventsController < ApplicationController
   end
   def my_events
     @user = current_user.id
-    @events=Event.where(:user_id => @user)
+    @events=Event.where(:user_id => @user).where(:published => "1")
   end
   # GET /events/1
   # GET /events/1.json

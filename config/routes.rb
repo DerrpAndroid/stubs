@@ -5,16 +5,21 @@ Rails.application.routes.draw do
   resources :sellers
   resources :users
   resources :events
+  resources :devise
+  resources :sessions
+  devise_scope :user do 
+    root 'welcome#index'
+    match '/sessions/user', to: 'devise/sessions#create', via: :post
+  end
   get 'welcome/index'
 
   get "my_events" => "events#my_events"
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'welcome#index'
+  #root 'welcome#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

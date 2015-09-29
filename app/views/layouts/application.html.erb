@@ -3,7 +3,6 @@
 <head>
   <title>StubfairClient</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
   <style>
@@ -13,57 +12,117 @@
   </style>
 </head>
 <body>
-	<nav id="main-navbar" class="navbar navbar-fixed-top">
-	  <div class="container">
-	    <div class="navbar-header">
-	      <a class="navbar-brand" href=<%= root_path%> style=" padding: 5px 5px;">
-	        <img alt="Brand" src=<%= image_path("logo.png")%> style="height:100%;">
-	      </a>
-	    </div>
-	    <button class="btn btn-primary navbar-right" type="button" style=" margin: 8px 0px;"><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></button>
-		<button class="btn btn-primary navbar-right" type="button" style=" margin: 8px 0px;"><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %></button>
-		<form class="navbar-form navbar-right" role="search">
-	        <div class="form-group">
-	          <input type="text" class="form-control" placeholder="Search">
-	        </div>
-	        <button type="submit" class="btn btn-default">Submit</button>
-	    </form>
+	
+	<!-- Navigation panel -->
+            <nav class="main-nav js-stick">
+                <div class="full-wrapper relative clearfix">
+                    <!-- Logo ( * your text or image into link tag *) -->
+                    <div class="nav-logo-wrap local-scroll">
+                        <%= link_to root_path do %><img src="../../assets/logo.png" alt=""> <% end %>
+                    </div>
+                    <div class="mobile-nav">
+                        <i class="fa fa-bars"></i>
+                    </div>
+                    
+                    <!-- Main Menu -->
+                    <div class="inner-nav desktop-nav">
+                        <ul class="clearlist">
+                            
+                            <!-- Item With Sub -->
+                            <li>
+                                <%= link_to 'Home', root_path %>
+                               
+                            </li>
+                            <!-- End Item With Sub -->
+                            
+                            <!-- Item With Sub -->
+                            <li>
+                                <%= link_to 'Events', events_path %>
+                                
+                            </li>
+                            <!-- End Item With Sub -->
+                            
+                            <!-- Item With Sub -->
+                            <li>
+                                <a href="#" class="mn-has-sub">Music <i class="fa fa-angle-down"></i></a>
+                               
+                            </li>
+                            <!-- End Item With Sub -->
+                            
+                            <!-- Item With Sub -->
+                            <li>
+                                <a href="#" class="mn-has-sub">Theatre <i class="fa fa-angle-down"></i></a>
+                               
+                            </li>
+                            <!-- End Item With Sub -->
+                            
+                            <!-- Divider -->
+                            <li><a>&nbsp;</a></li>
+                            <!-- End Divider -->
+                            
+                            <!-- Search -->
+                            <li>
+                                <a href="#" class="mn-has-sub"><i class="fa fa-search"></i> Search</a>
+                                
+                                <ul class="mn-sub">
+                                    
+                                    <li>
+                                        <div class="mn-wrap">
+                                            <form method="post" class="form">
+                                                <div class="search-wrap">
+                                                    <button class="search-button animate" type="submit" title="Start Search">
+                                                        <i class="fa fa-search"></i>
+                                                    </button>
+                                                    <input type="text" class="form-control search-field" placeholder="Search...">
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </li>
+                                    
+                                </ul>
+                                
+                            </li>
+                            <!-- End Search -->
+                            
+                            <!-- Cart -->
+                            <li>
+                                <a href="#" class="active"><i class="fa fa-shopping-cart"></i> Cart</a>
+                            </li>
+                            <!-- End Cart -->
+                            
+                            <!-- Login -->
+                            <%if user_signed_in?%>
+								<li>
+                                <%= link_to 'Logout', destroy_user_session_path,method: :delete %>
+                              
+                            </li>
+                            <%else%>
+                            <li>
+                                <%= link_to 'Login', new_user_session_path %>
+                              
+                            </li>
+                            <!-- End login -->
+                            <%end%>
+                            <!-- Signup -->
+                            <% if !user_signed_in?%>
+                            <li>
+                                <a href="#" class="mn-has-sub">Signup</a>
+                              
+                            </li>
+                            <%end%>
+                            <!-- End Signup -->
+                            
+                        </ul>
+                    </div>
+                    <!-- End Main Menu -->
+                    
 
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-	      <ul class="nav navbar-nav">
-	        <li class="active"><a href=<%= events_path %>>Upcoming <span class="sr-only">(current)</span></a></li>
-	        <li><a href="#">Sports</a></li>
-	        <li><a href="#">Concerts</a></li>
-	        <li><a href="#">Theater</a></li>
-			<% if user_signed_in? %>
-				<li><a href=<%= new_event_path %>>Sell Your Events</a></li>
-				Logged in as <strong><%= current_user.email %></strong>.
-				<%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-				<%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-			<% else %>
-
-
-				<%end%>
-	       <!--  <li class="dropdown">
-	          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-	          <ul class="dropdown-menu">
-	            <li><a href="#">Upcoming</a></li>
-	            <li><a href="#">Another action</a></li>
-	            <li><a href="#">Something else here</a></li>
-	            <li role="separator" class="divider"></li>
-	            <li><a href="#">Separated link</a></li>
-	            <li role="separator" class="divider"></li>
-	            <li><a href="#">One more separated link</a></li>
-	          </ul>
-	        </li> -->
-	      </ul>
-	    </div>
-
-
-	  </div>
-	</nav>
+                </div>
+            </nav>
+            <!-- End Navigation panel -->
+	<div class="spacing-top"></div>
 
 <%= yield %>
-
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>
 </html>

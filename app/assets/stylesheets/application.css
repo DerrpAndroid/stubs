@@ -13,7 +13,9 @@
  *= require_tree .
  *= require_self
  */
-
+a{
+	text-decoration: none !important;
+}
 .spacing-top{
 	 margin-top: 100px;
 }
@@ -21,4 +23,28 @@
 	height: 65px;
     background-color: #fff;
     box-shadow: #BCC3C3 0px 0px 20px;
+}
+
+.event-wrapper *{
+	text-align: center;
+}
+.event-wrapper img{
+	display: block;
+	margin: 0 auto;
+}
+.event-link:hover{
+	color: inherit;
+}
+
+.inner-nav .clearlist,.inner-nav .clearlist li,.inner-nav .clearlist li a{
+	height:75px;
+	line-height: 75px;
+}
+
+.submit_btn.btn.btn-mod.btn-medium.btn-round{
+	background: #373737 !important;
+	border: none;
+}
+.input-md.round.form-control{
+	width: 100% !important;
 }
