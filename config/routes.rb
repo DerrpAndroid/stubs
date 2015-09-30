@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     match '/sessions/user', to: 'devise/sessions#create', via: :post
   end
   get 'welcome/index'
-
+  get 'sellers/new' => 'sellers#refresh_search'
   get "my_events" => "events#my_events"
 
   # The priority is based upon order of creation: first created -> highest priority.

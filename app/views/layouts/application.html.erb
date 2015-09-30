@@ -95,7 +95,11 @@
 								<li>
                                 <%= link_to 'Logout', destroy_user_session_path,method: :delete %>
                               
-                            </li>
+                                </li>
+                                <li>
+                                <%= link_to 'Sell Ticket', new_seller_path%>
+                              
+                                </li>
                             <%else%>
                             <li>
                                 <%= link_to 'Login', new_user_session_path %>
@@ -124,5 +128,28 @@
 
 <%= yield %>
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+<script>
+      var theForm = document.getElementById( 'theForm' );
+      
+      new stepsForm( theForm, {
+        onSubmit : function( form ) {
+          // hide form
+          classie.addClass( theForm.querySelector( '.simform-inner' ), 'hide' );
+
+          /*
+          form.submit()
+          or
+          AJAX request (maybe show loading indicator while we don't have an answer..)
+          */
+
+          // let's just simulate something...
+          var messageEl = theForm.querySelector( '.final-message' );
+          messageEl.innerHTML = 'Searching for events...';
+          classie.addClass( messageEl, 'show' );
+          //$('.dynamic_search').load('/sellers/refresh_search');
+        }
+      } );
+    </script>
 </body>
 </html>

@@ -48,3 +48,14 @@ a{
 .input-md.round.form-control{
 	width: 100% !important;
 }
+
+
+.simform div ol input{
+	border: none ;
+	width: 100%;
+}
+
+.simform div ol input:focus{
+	border: none;
+	box-shadow: none;
+}

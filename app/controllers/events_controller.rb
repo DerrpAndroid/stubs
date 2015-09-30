@@ -18,6 +18,9 @@ class EventsController < ApplicationController
     
   end
 
+  def search
+    
+  end
   # GET /events/new
   def new
 
