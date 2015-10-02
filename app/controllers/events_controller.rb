@@ -19,7 +19,19 @@ class EventsController < ApplicationController
   end
 
   def search
-    
+    @event=Event.new
+    @search_result=Event.where(:venue => @event.venue).where(:title => @event.title)
+  end
+
+  def ticket_step1
+
+    $title=params[:title]
+    redirect_to '/event/search_result'
+
+  end
+
+  def search_result
+    @events=Event.find(:all, :conditions=> ["title LIKE ?", $title])
   end
   # GET /events/new
   def new

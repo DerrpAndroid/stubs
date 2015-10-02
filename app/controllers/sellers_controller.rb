@@ -13,13 +13,13 @@ class SellersController < ApplicationController
   end
 
   # GET /sellers/new
-  def new
-    @seller = Seller.new
-    @event=Event.new
-    $event1 = Event.new
-    #@search_result=Event.where(:venue => $event1.venue).where(:title => $event1.title)
-    @search_result=Event.where(:venue => 'L').where(:title => 'Test Event 1')
-  end
+  # def new
+  #   # @seller = Seller.new
+  #   # @event=Event.new
+  #   # $event1 = Event.new
+  #   # #@search_result=Event.where(:venue => $event1.venue).where(:title => $event1.title)
+  #   # @search_result=Event.where(:venue => 'L').where(:title => 'Test Event 1')
+  # end
 
   def refresh_search
     
